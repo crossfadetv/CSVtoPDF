@@ -1,4 +1,4 @@
-package CSVReader;
+package ch.kidin.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

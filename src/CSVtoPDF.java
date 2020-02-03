@@ -1,4 +1,4 @@
-import CSVReader.CSVReader;
+import ch.kidin.util.CSVReader;
 
 public class CSVtoPDF {
 
