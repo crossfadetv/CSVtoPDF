@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class CSVtoPDF {
 
+    private static final int YEAR = 2019;
+
     public static void main(String[] args) throws IOException {
 
         HashMap<String, Double[]> result = new CSVReader(18).getAmountPerFamily();
