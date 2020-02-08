@@ -17,7 +17,6 @@ public class GeneratePDF {
 
     public GeneratePDF(String payerName, Double[] amounts) {
         this.payerName = payerName;
-
         this.amounts = amounts;
         fullPath = PATH + "Steuerbescheinigung_" + payerName + ".pdf";
     }
@@ -26,6 +25,10 @@ public class GeneratePDF {
         return (int) (font.getStringWidth(line) / 1000 * fontSize);
     }
 
+    /**
+     * Sets the layout for the PDF (PDFBox-Library), fill it with content and save it.
+     * @throws IOException
+     */
     public void writePDF() throws IOException {
 
         //create doc
@@ -171,6 +174,6 @@ public class GeneratePDF {
 
         //cleaning memory
         document.close();
-        System.out.println("Document: " + payerName + ".pdf was generated in " + PATH);
+        System.out.println("Document: " + "Steuerbescheinigung_" + payerName + ".pdf was generated in " + PATH);
     }
 }

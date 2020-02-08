@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CSVReader {
     private HashMap<String, Double[]> amountPerFamily = new HashMap<>();
-    private String path="testCsv.csv";
+    private String path="revenues2019.csv";
     private String line = "";
     private String csvSplitBy=";";
     private int fromLine;
@@ -18,28 +18,17 @@ public class CSVReader {
         allLines = new ArrayList<>();
         this.readCSV();
         setAmountPerFamily();
-        printAmounts();
+        //printAmounts();
     }
     public CSVReader(int fromLine, String path, String csvSplitBy) {
         this.fromLine = fromLine;
         this.path = path;
         this.csvSplitBy = csvSplitBy;
     }
-    public void printAmounts() {
-        // TreeMap to store values of HashMap
-        TreeMap<String, Double[]> sorted = new TreeMap<>();
-        // Copy all data from hashMap into TreeMap
-        sorted.putAll(amountPerFamily);
-        // Display the TreeMap which is naturally sorted
-        for (Map.Entry<String, Double[]> entry : sorted.entrySet()) {
-            System.out.println("Rechnungszahler = " + entry.getKey() +
-                    ", Beträge = " + Arrays.toString(entry.getValue()));
-        }
 
-        System.out.println("Total Einträge: " + amountPerFamily.size());
-    }
-
-
+    /**
+     * Reads the lines from the given CSV-File and puts it in an array
+     */
     public void readCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             while ((line = br.readLine()) != null) {
@@ -54,6 +43,9 @@ public class CSVReader {
         }
     }
 
+    /**
+     * Filters the array for useful values and put those in a HashMap (String, Double[]).
+     */
     public void setAmountPerFamily() {
         for (int i = this.fromLine-1; i<allLines.size(); i++) {
             Double[] doubleArr = new Double[12];
