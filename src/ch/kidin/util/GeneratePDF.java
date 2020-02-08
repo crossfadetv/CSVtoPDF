@@ -155,8 +155,6 @@ public class GeneratePDF {
         PDImageXObject signImage = PDImageXObject.createFromFile("assets\\signature.jpg",document);
         layout.drawImage(signImage,pageMargin-5,pageMargin+30, signWidth, signHeight);
 
-
-
         //add footer
         int footerFontSize = 10;
         String footerText = "Kinderwelt kidin.ch | Schulweg 1 | 8616 Riedikon | info@kidin.ch";
