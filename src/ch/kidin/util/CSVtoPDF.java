@@ -1,5 +1,4 @@
-import ch.kidin.util.CSVReader;
-import ch.kidin.util.GeneratePDF;
+package ch.kidin.util;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -7,7 +6,7 @@ import java.util.Map;
 
 public class CSVtoPDF {
 
-    private static final int YEAR = 2019;
+    public static final int YEAR = 2019;
 
     public static void main(String[] args) throws IOException {
 
@@ -15,7 +14,7 @@ public class CSVtoPDF {
 
         for (Map.Entry<String,Double[]> entry : result.entrySet()) {
             try {
-                GeneratePDF pdf = new GeneratePDF(entry.getKey());
+                GeneratePDF pdf = new GeneratePDF(entry.getKey().replace("/", " und "),entry.getValue());
                 pdf.writePDF();
             } catch (IOException e) {
                 e.printStackTrace();
