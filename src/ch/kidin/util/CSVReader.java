@@ -1,4 +1,4 @@
-package CSVReader;
+package ch.kidin.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,10 +31,10 @@ public class CSVReader {
         // Copy all data from hashMap into TreeMap
         sorted.putAll(amountPerFamily);
         // Display the TreeMap which is naturally sorted
-        for (Map.Entry<String, Double[]> entry : sorted.entrySet())
+        for (Map.Entry<String, Double[]> entry : sorted.entrySet()) {
             System.out.println("Rechnungszahler = " + entry.getKey() +
                     ", Beträge = " + Arrays.toString(entry.getValue()));
-
+        }
 
         System.out.println("Total Einträge: " + amountPerFamily.size());
     }
@@ -43,8 +43,10 @@ public class CSVReader {
     public void readCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             while ((line = br.readLine()) != null) {
-                // use comma as separator
                 String[] lineArr = line.split(this.csvSplitBy);
+                if (!lineArr[0].equals("")) {
+                    lineArr[0] = lineArr[0].substring(1,lineArr[0].length()-1);
+                }
                 allLines.add(lineArr);
             }
         } catch (IOException e) {
@@ -63,8 +65,7 @@ public class CSVReader {
         }
     }
 
-
-
-
-
+    public HashMap<String, Double[]> getAmountPerFamily() {
+        return amountPerFamily;
+    }
 }
