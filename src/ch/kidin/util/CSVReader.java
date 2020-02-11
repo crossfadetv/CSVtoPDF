@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CSVReader {
     private HashMap<String, Double[]> amountPerFamily = new HashMap<>();
-    private String path="revenues2019.csv";
+    private String revenueCsvPath ="revenues2019.csv";
     private String line = "";
     private String csvSplitBy=";";
     private int fromLine;
@@ -20,9 +20,9 @@ public class CSVReader {
         setAmountPerFamily();
         //printAmounts();
     }
-    public CSVReader(int fromLine, String path, String csvSplitBy) {
+    public CSVReader(int fromLine, String revenueCsvPath, String csvSplitBy) {
         this.fromLine = fromLine;
-        this.path = path;
+        this.revenueCsvPath = revenueCsvPath;
         this.csvSplitBy = csvSplitBy;
     }
 
@@ -30,7 +30,7 @@ public class CSVReader {
      * Reads the lines from the given CSV-File and puts it in an array
      */
     public void readCSV() {
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(revenueCsvPath))) {
             while ((line = br.readLine()) != null) {
                 String[] lineArr = line.split(this.csvSplitBy);
                 if (!lineArr[0].equals("")) {
