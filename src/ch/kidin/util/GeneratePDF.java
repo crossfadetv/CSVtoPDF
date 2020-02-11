@@ -18,7 +18,11 @@ public class GeneratePDF {
     public GeneratePDF(String payerName, Double[] amounts) {
         this.payerName = payerName;
         this.amounts = amounts;
-        fullPath = PATH + "Steuerbescheinigung_" + payerName + ".pdf";
+        String familyName = payerName;
+        if (payerName.contains("Familie")) {
+            familyName = payerName.substring(8);
+        }
+        fullPath = PATH + "Steuerbescheinigung_Fam_" + familyName + ".pdf";
     }
 
     public int getTextSize(PDFont font, String line, int fontSize) throws IOException {
